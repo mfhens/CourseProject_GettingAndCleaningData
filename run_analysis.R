@@ -29,6 +29,7 @@ run_analysis <- function()
   complete_data_set <- rbind(test_data, train_data)
   
   tidy_data_set <- ddply(complete_data_set, .(Subject, Activity), colMeans)
+  names(tidy_data_set)[3:81] <- paste("Average of", names(tidy_data_set)[3:81])
   tidy_data_set$Activity <-  factor(tidy_data_set$Activity)
   levels(tidy_data_set$Activity) <- c( "WALKING", 
                                        "WALKING_UPSTAIRS",
